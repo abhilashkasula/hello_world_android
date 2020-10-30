@@ -3,7 +3,7 @@ pipeline {
     stages {
        stage('Setup') {
            steps {
-              sh 'echo "sdk.dir=${ANDROID_HOME}" >> local.properties'
+              sh 'echo "sdk.dir=${ANDROID_HOME}" > local.properties'
            }
        }
        stage('Build') {
