@@ -4,11 +4,10 @@ pipeline {
        stage('Build') {
           steps {
               sh 'echo "sdk.dir=${ANDROID_HOME}" > local.properties'
-              sh 'docker run --rm             \
-                        -u "${UID}"            \
+              sh 'docker run \
                         -v `pwd`:/target        \
                         -w /target              \
-                        android-env ./gradlew build'
+                        android-build ./gradlew build'
           }
        }
     }
