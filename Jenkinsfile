@@ -12,12 +12,15 @@ pipeline {
                     }
                 }
                 stage('Build') {
-                   steps {
+                    agent {
+                        node { label 'master' }
+                    }
+                    steps {
                        sh 'docker run \
                              -v `pwd`:/target        \
                              -w /target              \
                              android-build ./gradlew build'
-                   }
+                    }
                 }
             }
         }
