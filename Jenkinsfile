@@ -4,8 +4,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'docker run \
-                    -v `pwd`:/target
-                    -w /target
+                    -v `pwd`:/target \
+                    -w /target \
                     android-build ./gradlew test'
             }
         }
