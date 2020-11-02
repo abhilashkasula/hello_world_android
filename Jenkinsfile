@@ -4,6 +4,7 @@ pipeline {
         stage('Test and Build') {
             parallel {
                 stage('Test') {
+                    agent any
                     steps {
                         sh 'docker run \
                             -v `pwd`:/target \
@@ -12,9 +13,7 @@ pipeline {
                     }
                 }
                 stage('Build') {
-                    agent {
-                        node { label 'master' }
-                    }
+                    agent any
                     steps {
                        sh 'docker run \
                              -v `pwd`:/target        \
