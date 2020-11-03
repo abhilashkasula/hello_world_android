@@ -1,10 +1,9 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Test and Build') {
             parallel {
                 stage('Test') {
-                    agent any
                     steps {
                         sh 'docker run \
                             -v `pwd`:/target \
